@@ -7,12 +7,15 @@ const HorariosList = ({ navigation }) => {
 
   useEffect(() => {
     fetchHorarios();
-  }, []);
+  }, [3000]);
 
-  const fetchHorarios = async () => {
+  const fetchHorarios = () => {
     try {
-      const response = await getHorarios();
-      setHorarios(response.data);
+      getHorarios().then((res)=>{
+        setHorarios(res);
+      }).catch((error)=>{
+        console.error('Error al obtener horarios:', error);
+      })
     } catch (error) {
       console.error('Error al obtener horarios:', error);
     }
@@ -38,8 +41,8 @@ const HorariosList = ({ navigation }) => {
     }
   };
 
-  const renderItem = ({ item }) => (
-    <View style={styles.item}>
+  const renderItem = (item,i) => (
+    <View key={i} style={styles.item}>
       <Text>{item.dia}</Text>
       <Text>{item.hora_inicio} - {item.hora_fin}</Text>
       <Text>{item.materia}</Text>
@@ -61,13 +64,11 @@ const HorariosList = ({ navigation }) => {
     </View>
   );
 
-  return (
+   return (
     <View style={styles.container}>
-      <FlatList
-        data={horarios}
-        renderItem={renderItem}
-        keyExtractor={item => item.id.toString()}
-      />
+        {horarios.map((item,i)=>{
+          return renderItem(item,i)
+          })}
       <TouchableOpacity 
         style={styles.addButton} 
         onPress={() => navigation.navigate('AddHorario')}
