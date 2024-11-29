@@ -24,4 +24,23 @@ export const getHorarios = async () => {
       throw error;
     }
   };
+  export const updateHorario = async (id, horario) => {
+    try {
+      const response = await axios.put(`${APISEND_URL}?id=${id}`, horario);
+      return response.data;
+    } catch (error) {
+      console.error('Error detallado:', error.response ? error.response.data : error.message);
+      throw error;
+    }
+  };
+  
+  export const deleteHorario = async (id) => {
+    try {
+      const response = await axios.delete(`${APISEND_URL}?id=${id}`);
+      return response.data;
+    } catch (error) {
+      console.error('Error detallado:', error.response ? error.response.data : error.message);
+      throw error;
+    }
+  };
   

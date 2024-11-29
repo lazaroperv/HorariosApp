@@ -42,14 +42,14 @@ const HorariosList = ({ navigation }) => {
   };
 
   const renderItem = (item,i) => (
-    <View key={i} style={styles.item}>
+    <View key={i} style={styles.item} >
       <Text>{item.dia}</Text>
       <Text>{item.hora_inicio} - {item.hora_fin}</Text>
       <Text>{item.materia}</Text>
       <Text>{item.profesor}</Text>
       <View style={styles.buttonContainer}>
         <TouchableOpacity 
-          style={styles.editButton} 
+          className="bg-slate-800"
           onPress={() => navigation.navigate('EditHorario', { horario: item })}
         >
           <Text style={styles.buttonText}>Editar</Text>
@@ -65,7 +65,8 @@ const HorariosList = ({ navigation }) => {
   );
 
    return (
-    <View style={styles.container}>
+
+    <View>
         {horarios.map((item,i)=>{
           return renderItem(item,i)
           })}

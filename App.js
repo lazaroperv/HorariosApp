@@ -3,16 +3,18 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import './global.css';
 
 import HorariosList from './src/components/HorariosList';
 import AddHorario from './src/components/AddHorario';
 import EditHorario from './src/components/EditHorario';
 
+
 const Stack = createStackNavigator();
 
 function HomeScreen({ navigation }) {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} className="">
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate('HorariosList')}
