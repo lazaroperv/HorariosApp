@@ -2,8 +2,8 @@ import axios from 'axios';
 
 // const API_URL = 'http://192.168.1.40/horarios_api/config.php';
 // const API_URL = 'http://192.168.249.232/prueba/getData.php';
- const API_URL = 'https://mayola.net.ar/prueba/getData.php';
- const APISEND_URL = 'https://mayola.net.ar/prueba/setData.php';
+ const API_URL = 'https://unlz-economia.000.pe/config.php';
+ const APISEND_URL = 'https://unlz-economia.000.pe/config.php';
 
 export const getHorarios = async () => {
     try {

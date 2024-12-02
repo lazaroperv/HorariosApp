@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import './global.css';
+// import './global.css';
 
 import HorariosList from './src/components/HorariosList';
 import AddHorario from './src/components/AddHorario';
@@ -26,12 +26,6 @@ function HomeScreen({ navigation }) {
         onPress={() => navigation.navigate('AddHorario')}
       >
         <Text style={styles.buttonText}>Agregar Horario</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('EditHorario', { id: null })}
-      >
-        <Text style={styles.buttonText}>Editar Horario</Text>
       </TouchableOpacity>
       <StatusBar style="auto" />
     </View>
@@ -59,7 +53,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   button: {
-    backgroundColor: '#007AFF',
+    backgroundColor: 'violet',
     padding: 15,
     borderRadius: 5,
     margin: 10,

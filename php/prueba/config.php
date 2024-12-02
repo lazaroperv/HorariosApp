@@ -1,36 +1,37 @@
+
 <?php
-header("Access-Control-Allow-Origin: *"); // Permitir CORS
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS"); // Métodos permitidos
-header("Access-Control-Allow-Headers: Content-Type"); // Cabeceras permitidas
+    header("Access-Control-Allow-Origin: *"); // Permitir CORS
+    header("Access-Control-Allow-Methods: GET, POST, OPTIONS"); // Métodos permitidos
+    header("Access-Control-Allow-Headers: Content-Type"); // Cabeceras permitidas
 
-// Configuración de la base de datos
-$host = 'localhost'; // Cambia esto si tu baste de datos está en otro servidor
-$dbname = 'ecounlz'; // Cambia esto por el nombre de tu base de datos
-$username = 'root'; // Cambia esto por tu usuario de base de datos
-$password = ''; // Cambia esto por tu contraseña de base de datos
 
-try {
-    // Crear conexión
-    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    // Configurar el modo de error de PDO para que lance excepciones
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $host = 'sql208.infinityfree.com'; // Cambia esto si tu baste de datos está en otro servidor
+    $dbname = 'if0_37574852_XXX'; // Cambia esto por el nombre de tu base de datos
+    $username = 'if0_37574852'; // Cambia esto por tu usuario de base de datos
+    $password = '7tfY4nsLgy7eyQo'; // Cambia esto por tu contraseña de base de datos
 
-    // Consulta SQL
-    $sql = "SELECT * FROM horarios"; // Cambia esto por tu consulta SQL
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
+    try {
+        // Crear conexión
+        $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+        // Configurar el modo de error de PDO para que lance excepciones
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Obtener los resultados
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // Consulta SQL
+        $sql1 = "SELECT * FROM horarios"; // Cambia esto por tu consulta SQL
+        $stmt = $conn->prepare($sql1);
+        $stmt->execute();
 
-    // Devolver los resultados como JSON
-    header('Content-Type: application/json');
-    echo json_encode($result);
-} catch (PDOException $e) {
-    // Manejo de errores
-    echo json_encode(['error' => $e->getMessage()]);
-}
-$conn=null;
+        // Obtener los resultados
+        $result1 = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Devolver los resultados como JSON
+        header('Content-Type: application/json');
+        echo json_encode($result1);
+    } catch (PDOException $e) {
+        // Manejo de errores
+        echo json_encode(['error' => $e->getMessage()]);
+    }
+    $conn=null;
 ?>
 <?php
 try {
@@ -82,8 +83,8 @@ $hora_fin = $data->hora_fin;
 $materia = $data->materia;
 $profesor = $data->profesor;
 
-$sql = "UPDATE horarios SET dia = ?, hora_inicio = ?, hora_fin = ?, materia = ?, profesor = ? WHERE id = ?";
-$stmt = $conn->prepare($sql);
+$sql2 = "UPDATE horarios SET dia = ?, hora_inicio = ?, hora_fin = ?, materia = ?, profesor = ? WHERE id = ?";
+$stmt = $conn->prepare($sql2);
 $stmt->bind_param("sssssi", $dia, $hora_inicio, $hora_fin, $materia, $profesor, $id);
 
 if ($stmt->execute()) {
@@ -97,8 +98,8 @@ $conn=null;
 ?>
 <?php
 $id = isset($_GET['id']) ? $_GET['id'] : die();
-$sql = "DELETE FROM horarios WHERE id = ?";
-$stmt = $conn->prepare($sql);
+$sql3 = "DELETE FROM horarios WHERE id = ?";
+$stmt = $conn->prepare($sql3);
 $stmt->bind_param("i", $id);
 
 if ($stmt->execute()) {
