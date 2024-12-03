@@ -2,8 +2,10 @@ import axios from 'axios';
 
 // const API_URL = 'http://192.168.1.40/horarios_api/config.php';
 // const API_URL = 'http://192.168.249.232/prueba/getData.php';
- const API_URL = 'https://unlz-economia.000.pe/config.php';
- const APISEND_URL = 'https://unlz-economia.000.pe/config.php';
+ const API_URL = 'https://unlz.mayola.net.ar/config.php';
+ const APISEND_URL = 'https://unlz.mayola.net.ar/config.php';
+ const APIUPDATE_URL='https://unlz.mayola.net.ar/config.php';
+
 
 export const getHorarios = async () => {
     try {
@@ -26,7 +28,7 @@ export const getHorarios = async () => {
   };
   export const updateHorario = async (id, horario) => {
     try {
-      const response = await axios.put(`${APISEND_URL}?id=${id}`, horario);
+      const response = await axios.put(`${APIUPDATE_URL}?id=${id}`, horario);
       return response.data;
     } catch (error) {
       console.error('Error detallado:', error.response ? error.response.data : error.message);
