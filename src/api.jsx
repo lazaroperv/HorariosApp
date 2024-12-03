@@ -28,7 +28,8 @@ export const getHorarios = async () => {
   };
   export const updateHorario = async (id, horario) => {
     try {
-      const response = await axios.put(`${APIUPDATE_URL}?id=${id}`, horario);
+      console.log({...horario, id:id})
+      const response = await axios.put(`${APIUPDATE_URL}?id=${id}`, {...horario, id:id});
       return response.data;
     } catch (error) {
       console.error('Error detallado:', error.response ? error.response.data : error.message);
